@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bdmiweung8aje"]
+
+[ext_resource type="Script" uid="uid://p42c57m4tqa6" path="res://scripts/test_enemy.gd" id="1_fpxyv"]
+[ext_resource type="Resource" uid="uid://35352klp1uv3" path="res://resources/enemy_1.tres" id="2_fpxyv"]
+[ext_resource type="Script" uid="uid://dhai276fjnin6" path="res://addons/hurtzone/hurtzone_template.gd" id="2_mkyue"]
+[ext_resource type="PackedScene" uid="uid://djclhrnbaapwb" path="res://scenes/health_bar.tscn" id="3_8c00y"]
+[ext_resource type="Texture2D" uid="uid://cpstwlh22mafo" path="res://assets/player and enemy sprites.png" id="3_lkcdx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_picnl"]
+bg_color = Color(0.7058824, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkcdx"]
+atlas = ExtResource("3_lkcdx")
+region = Rect2(0, 1590, 357, 153)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8c00y"]
+atlas = ExtResource("3_lkcdx")
+region = Rect2(0, 1743, 357, 153)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oeqib"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkcdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8c00y")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bo6o2"]
+radius = 25.0
+height = 80.0
+
+[sub_resource type="Animation" id="Animation_fpxyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_lkcdx"]
+resource_name = "enemy_hurt"
+length = 0.3
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"nothurt"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8c00y"]
+resource_name = "normal"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8c00y"]
+_data = {
+&"RESET": SubResource("Animation_fpxyv"),
+&"enemy_hurt": SubResource("Animation_lkcdx"),
+&"normal": SubResource("Animation_8c00y")
+}
+
+[node name="test enemy" type="CharacterBody2D" unique_id=963406259 node_paths=PackedStringArray("sprites", "healthbar") groups=["enemy"]]
+z_index = 1
+collision_layer = 4
+script = ExtResource("1_fpxyv")
+enemy_stats = ExtResource("2_fpxyv")
+knockback = 400
+sprites = NodePath("AnimatedSprite2D")
+healthbar = NodePath("health bar")
+metadata/_custom_type_script = "uid://oskp6wl4byn7"
+
+[node name="health bar" parent="." unique_id=691706956 instance=ExtResource("3_8c00y")]
+offset_left = -71.0
+offset_top = -69.0
+offset_right = 69.0
+offset_bottom = -58.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_picnl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=626920675]
+position = Vector2(1, -21)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_oeqib")
+
+[node name="Hurtzone" type="Area2D" parent="." unique_id=1008033876]
+collision_mask = 2
+script = ExtResource("2_mkyue")
+metadata/_custom_type_script = "uid://dhai276fjnin6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtzone" unique_id=1270236475]
+position = Vector2(-25, -13)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bo6o2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1285431630]
+position = Vector2(-25, -13)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_bo6o2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1586833933]
+libraries/ = SubResource("AnimationLibrary_8c00y")

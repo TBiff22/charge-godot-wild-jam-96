@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://brgho11tos3a1"]
+
+[ext_resource type="Texture2D" uid="uid://uv7kx0ywp4n4" path="res://assets/Untitled_Artwork 7.png" id="1_j1mmx"]
+[ext_resource type="Script" uid="uid://dnv0ky4q646n4" path="res://scripts/settings_button.gd" id="2_j1mmx"]
+[ext_resource type="AudioStream" uid="uid://bx5qni7c3gxyl" path="res://assets/sfx/pop_4.wav" id="3_v456u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buiyl"]
+atlas = ExtResource("1_j1mmx")
+region = Rect2(115, 974, 344, 217)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1s2dm"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eabjm"]
+atlas = SubResource("CompressedTexture2D_1s2dm")
+region = Rect2(115, 974, 344, 217)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_88e76"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6542"]
+atlas = SubResource("CompressedTexture2D_88e76")
+region = Rect2(571, 974, 344, 217)
+
+[node name="settings button" type="TextureButton" unique_id=1842126374]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -124.0
+offset_right = 256.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.75, 0.75)
+texture_normal = SubResource("AtlasTexture_buiyl")
+texture_pressed = SubResource("AtlasTexture_eabjm")
+texture_hover = SubResource("AtlasTexture_j6542")
+stretch_mode = 3
+script = ExtResource("2_j1mmx")
+
+[node name="buttonpress" type="AudioStreamPlayer" parent="." unique_id=1230269273]
+stream = ExtResource("3_v456u")
+volume_db = -10.544
+bus = &"sfx"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

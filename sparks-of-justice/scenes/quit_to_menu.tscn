@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bjv1e1ylmou3w"]
+
+[ext_resource type="Texture2D" uid="uid://uv7kx0ywp4n4" path="res://assets/Untitled_Artwork 7.png" id="1_pj7mj"]
+[ext_resource type="Script" uid="uid://b1ojxyi4cy7a" path="res://scripts/quit_to_menu.gd" id="2_buiyl"]
+[ext_resource type="AudioStream" uid="uid://bx5qni7c3gxyl" path="res://assets/sfx/pop_4.wav" id="3_buiyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_st3e4"]
+atlas = ExtResource("1_pj7mj")
+region = Rect2(115, 56, 344, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrc3n"]
+atlas = ExtResource("1_pj7mj")
+region = Rect2(115, 56, 344, 217)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2klj"]
+atlas = ExtResource("1_pj7mj")
+region = Rect2(571, 56, 344, 217)
+
+[node name="quit to menu" type="TextureButton" unique_id=1266826209]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.0
+offset_top = -108.5
+offset_right = 172.0
+offset_bottom = 108.5
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = SubResource("AtlasTexture_st3e4")
+texture_pressed = SubResource("AtlasTexture_nrc3n")
+texture_hover = SubResource("AtlasTexture_v2klj")
+script = ExtResource("2_buiyl")
+
+[node name="buttonpress" type="AudioStreamPlayer" parent="." unique_id=24903480]
+stream = ExtResource("3_buiyl")
+volume_db = -10.544
+bus = &"sfx"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

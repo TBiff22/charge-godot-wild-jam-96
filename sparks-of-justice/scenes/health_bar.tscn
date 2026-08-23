@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://djclhrnbaapwb"]
+
+[ext_resource type="Script" uid="uid://tbfum6162xa2" path="res://scripts/health_bar.gd" id="1_1bvlm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iwqyq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1bvlm"]
+
+[node name="health bar" type="ProgressBar" unique_id=691706956]
+offset_right = 240.0
+offset_bottom = 28.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_iwqyq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1bvlm")
+value = 100.0
+show_percentage = false
+script = ExtResource("1_1bvlm")
+
+[node name="Timer" type="Timer" parent="." unique_id=1105004274]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

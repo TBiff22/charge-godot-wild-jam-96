@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dc7n2a4s341mp"]
+
+[ext_resource type="Texture2D" uid="uid://uv7kx0ywp4n4" path="res://assets/Untitled_Artwork 7.png" id="1_qg01q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeqib"]
+atlas = ExtResource("1_qg01q")
+region = Rect2(136, 1584, 776, 208)
+
+[node name="died text" type="Sprite2D" unique_id=1043848261]
+texture = SubResource("AtlasTexture_oeqib")

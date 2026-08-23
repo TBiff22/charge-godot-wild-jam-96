@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dvpsvaekgtxpb"]
+
+[ext_resource type="Script" uid="uid://c8p1y6ws75iuf" path="res://scripts/respawn_point.gd" id="1_j6bsa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqib"]
+size = Vector2(62, 191)
+
+[node name="respawn point" type="Area2D" unique_id=1432042019]
+script = ExtResource("1_j6bsa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=719632847]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_oeqib")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=463974633]
+visible = false
+position = Vector2(129, 47)
+polygon = PackedVector2Array(-160, -80, -88, -80, -88, -16, -160, -16)
+uv = PackedVector2Array(-160, -80, -88, -80, -88, -16, -160, -16)

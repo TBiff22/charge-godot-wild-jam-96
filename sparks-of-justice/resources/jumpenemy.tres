@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="basic_stats" format=3 uid="uid://bi0lioj80reel"]
+
+[ext_resource type="Script" uid="uid://csu606ciwf0j2" path="res://scripts/basic_stats.gd" id="1_6p7ku"]
+
+[resource]
+script = ExtResource("1_6p7ku")
+type = "jumping enemy"
+attack = 3
+health = 15
+gravity = 1.0
+metadata/_custom_type_script = "uid://csu606ciwf0j2"
