@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://fak13ux4onfq"]
+
+[ext_resource type="Script" uid="uid://576ens1k6vjn" path="res://scripts/player_ui.gd" id="1_jkj6h"]
+[ext_resource type="PackedScene" uid="uid://djclhrnbaapwb" path="res://scenes/health_bar.tscn" id="2_48xfa"]
+[ext_resource type="Texture2D" uid="uid://cpstwlh22mafo" path="res://assets/player and enemy sprites.png" id="2_sk4pr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8isll"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ctsh"]
+bg_color = Color(1, 0.52156866, 0.52156866, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeqib"]
+atlas = ExtResource("2_sk4pr")
+region = Rect2(664, 1856, 736, 77)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bkx2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n31oh"]
+bg_color = Color(1, 0.93333334, 0.52156866, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48xfa"]
+atlas = ExtResource("2_sk4pr")
+region = Rect2(664, 1944, 736, 104)
+
+[node name="player ui" type="Node2D" unique_id=1088037082]
+script = ExtResource("1_jkj6h")
+
+[node name="health bar" type="Node2D" parent="." unique_id=867072648]
+position = Vector2(-703, -737)
+
+[node name="Polygon2D" type="Polygon2D" parent="health bar" unique_id=954911178]
+position = Vector2(63.07999, 106.66667)
+scale = Vector2(2.855, 2.3333333)
+color = Color(0.2509804, 0.34901962, 0.4745098, 1)
+polygon = PackedVector2Array(-96, -56, 104, -56, 104, -32, -96, -32)
+uv = PackedVector2Array(-96, -56, 104, -56, 104, -32, -96, -32)
+
+[node name="health bar2" parent="health bar" unique_id=691706956 instance=ExtResource("2_48xfa")]
+offset_left = -211.0
+offset_top = -27.0
+offset_right = 362.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_8isll")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7ctsh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="health bar" unique_id=832893580]
+texture = SubResource("AtlasTexture_oeqib")
+
+[node name="healthtext" type="RichTextLabel" parent="health bar" unique_id=1801617908]
+offset_left = 397.0
+offset_top = -47.0
+offset_right = 952.0
+offset_bottom = 43.0
+theme_override_font_sizes/normal_font_size = 64
+text = "H E A L T H"
+scroll_active = false
+
+[node name="charge bar" type="Node2D" parent="." unique_id=1856420168]
+position = Vector2(-703, -737)
+
+[node name="Polygon2D" type="Polygon2D" parent="charge bar" unique_id=1819338419]
+position = Vector2(62.772797, 224)
+scale = Vector2(2.8518, 2.3333333)
+color = Color(0.2509804, 0.34901962, 0.4745098, 1)
+polygon = PackedVector2Array(-96, -56, 104, -56, 104, -32, -96, -32)
+uv = PackedVector2Array(-96, -56, 104, -56, 104, -32, -96, -32)
+
+[node name="charge bar" parent="charge bar" unique_id=1988222243 instance=ExtResource("2_48xfa")]
+offset_left = -212.0
+offset_top = 91.0
+offset_right = 362.0
+offset_bottom = 151.0
+theme_override_styles/background = SubResource("StyleBoxEmpty_bkx2g")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n31oh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="charge bar" unique_id=255899658]
+position = Vector2(0, 120)
+texture = SubResource("AtlasTexture_48xfa")
+
+[node name="chargetext" type="RichTextLabel" parent="charge bar" unique_id=427434844]
+offset_left = 396.0
+offset_top = 75.0
+offset_right = 787.0
+offset_bottom = 196.0
+theme_override_font_sizes/normal_font_size = 64
+text = "C H A R G E"
+
+[node name="other info" type="Node2D" parent="." unique_id=74258674]
+position = Vector2(-703, -737)
+
+[node name="timer label" type="RichTextLabel" parent="other info" unique_id=575022026]
+offset_left = 1133.0
+offset_top = -46.0
+offset_right = 2102.0
+offset_bottom = 122.0
+theme_override_font_sizes/normal_font_size = 64
+horizontal_alignment = 1

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://olxxjplvtv7k"]
+
+[ext_resource type="AudioStream" uid="uid://vqf2peo7i6wn" path="res://assets/AUDIO-2026-08-21-20-22-22.mp3" id="1_venli"]
+[ext_resource type="Script" uid="uid://bvlg0l1t5jfun" path="res://scenes/menu_bgm.gd" id="2_xsq0b"]
+
+[node name="menu bgm" type="AudioStreamPlayer" unique_id=1648647352]
+stream = ExtResource("1_venli")
+bus = &"bgm"
+parameters/looping = true
+script = ExtResource("2_xsq0b")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

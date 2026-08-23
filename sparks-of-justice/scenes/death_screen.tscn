@@ -1,0 +1,133 @@
+[gd_scene format=3 uid="uid://dbmhq81hlunj8"]
+
+[ext_resource type="Script" uid="uid://cpmayk8hiwnlr" path="res://scripts/death_screen.gd" id="1_dwo6e"]
+[ext_resource type="PackedScene" uid="uid://bjv1e1ylmou3w" path="res://scenes/quit_to_menu.tscn" id="1_uyutr"]
+[ext_resource type="PackedScene" uid="uid://dc7n2a4s341mp" path="res://scenes/extra visual effects/died_text.tscn" id="3_7ns25"]
+[ext_resource type="Texture2D" uid="uid://cpstwlh22mafo" path="res://assets/player and enemy sprites.png" id="4_gwety"]
+[ext_resource type="AudioStream" uid="uid://bx5qni7c3gxyl" path="res://assets/sfx/pop_4.wav" id="5_gwety"]
+
+[sub_resource type="Gradient" id="Gradient_7ns25"]
+offsets = PackedFloat32Array(0.5555556, 1)
+colors = PackedColorArray(0.2509804, 0.3529412, 0.48235294, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7ns25"]
+gradient = SubResource("Gradient_7ns25")
+height = 100
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_gwety"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oeqib"]
+gradient = SubResource("Gradient_gwety")
+height = 200
+fill_from = Vector2(0, 0.24358976)
+fill_to = Vector2(0, 0.77991456)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oeqib"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7ns25"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwety"]
+atlas = SubResource("CompressedTexture2D_7ns25")
+region = Rect2(115, 671, 344, 217)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_dwo6e"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqh5l"]
+atlas = SubResource("CompressedTexture2D_dwo6e")
+region = Rect2(571, 671, 344, 217)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wfw3d"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtkkp"]
+atlas = SubResource("CompressedTexture2D_wfw3d")
+region = Rect2(496, 1584, 416, 208)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeqib"]
+atlas = ExtResource("4_gwety")
+region = Rect2(947, 124, 315, 135)
+
+[node name="death screen" type="Node2D" unique_id=1834811377]
+z_index = 10
+script = ExtResource("1_dwo6e")
+
+[node name="background" type="Node2D" parent="." unique_id=102588474]
+
+[node name="Polygon2D" type="Polygon2D" parent="background" unique_id=1094847808]
+position = Vector2(415.14716, 183.38464)
+scale = Vector2(5.0330887, 8.519231)
+polygon = PackedVector2Array(-216, -72, 56, -72, 56, 32, -216, 32)
+uv = PackedVector2Array(-216, -72, 56, -72, 56, 32, -216, 32)
+
+[node name="Polygon2D3" type="Polygon2D" parent="background" unique_id=70978366]
+position = Vector2(-456.00006, 71.4247)
+rotation = 3.1415927
+scale = Vector2(5.794144, 12.772888)
+color = Color(0.2509804, 0.3529412, 0.48235294, 1)
+texture = SubResource("GradientTexture2D_7ns25")
+polygon = PackedVector2Array(-216, -72, 56, -72, 56, 32, -216, 32)
+uv = PackedVector2Array(-216, -72, 56, -72, 56, 32, -216, 32)
+
+[node name="Polygon2D2" type="Polygon2D" parent="background" unique_id=300410025]
+texture_repeat = 1
+position = Vector2(41.101936, -316.34875)
+scale = Vector2(3.694387, 3.2034895)
+texture = SubResource("GradientTexture2D_oeqib")
+polygon = PackedVector2Array(-80, -72, -160, 168, 8, 168)
+uv = PackedVector2Array(-80, -72, -184, 168, -16, 168)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1512476046]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 155.14716
+offset_top = -286.61536
+offset_right = 537.14716
+offset_bottom = 366.38464
+grow_vertical = 2
+alignment = 1
+
+[node name="quit to menu" parent="VBoxContainer" unique_id=1266826209 instance=ExtResource("1_uyutr")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=945849996]
+layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oeqib")
+disabled = true
+text = "
+
+
+"
+flat = true
+
+[node name="retry" type="TextureButton" parent="VBoxContainer" unique_id=1197264990]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_gwety")
+texture_pressed = SubResource("AtlasTexture_gwety")
+texture_hover = SubResource("AtlasTexture_mqh5l")
+
+[node name="died text2" parent="." unique_id=1043848261 instance=ExtResource("3_7ns25")]
+modulate = Color(1, 1, 1, 0.54509807)
+position = Vector2(-91.99999, -49.000008)
+scale = Vector2(0.7548078, 0.77884614)
+texture = SubResource("AtlasTexture_wtkkp")
+
+[node name="died text" parent="." unique_id=1857291974 instance=ExtResource("3_7ns25")]
+position = Vector2(-219.85284, -51.615356)
+scale = Vector2(0.75, 0.75)
+
+[node name="dead player" type="Sprite2D" parent="." unique_id=954136103]
+position = Vector2(-236.85284, 175.38464)
+texture = SubResource("AtlasTexture_oeqib")
+
+[node name="buttonpress" type="AudioStreamPlayer" parent="." unique_id=473113222]
+stream = ExtResource("5_gwety")
+volume_db = -10.544
+bus = &"sfx"
+
+[connection signal="pressed" from="VBoxContainer/retry" to="." method="_on_retry_pressed"]

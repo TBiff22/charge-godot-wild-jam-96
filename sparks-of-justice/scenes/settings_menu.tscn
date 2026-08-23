@@ -1,0 +1,125 @@
+[gd_scene format=3 uid="uid://dur6e3taq3i78"]
+
+[ext_resource type="Script" uid="uid://d2rvt65kk3asv" path="res://scripts/settings_menu.gd" id="1_05p07"]
+[ext_resource type="Texture2D" uid="uid://uv7kx0ywp4n4" path="res://assets/Untitled_Artwork 7.png" id="2_cr101"]
+[ext_resource type="AudioStream" uid="uid://bx5qni7c3gxyl" path="res://assets/sfx/pop_4.wav" id="3_wswnh"]
+[ext_resource type="Script" uid="uid://cuf5erpchlggr" path="res://scenes/master_volume.gd" id="4_labj1"]
+[ext_resource type="Script" uid="uid://ckd1x3sd51ov8" path="res://scenes/sfx.gd" id="5_lwwgp"]
+[ext_resource type="Script" uid="uid://del1kj5cn4l5" path="res://scenes/bgm.gd" id="6_bgjg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeqib"]
+atlas = ExtResource("2_cr101")
+region = Rect2(115, 356, 344, 217)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wswnh"]
+load_path = "res://.godot/imported/Untitled_Artwork 7.png-d569bafc17d418ee9c8c8e7dd03ba38a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_labj1"]
+atlas = SubResource("CompressedTexture2D_wswnh")
+region = Rect2(571, 356, 344, 217)
+
+[node name="settings menu" type="Node2D" unique_id=1107653961]
+z_index = 9
+script = ExtResource("1_05p07")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=82200395]
+position = Vector2(-34.995483, 34.285698)
+scale = Vector2(2.432736, 4.142857)
+polygon = PackedVector2Array(-104, -72, 128, -72, 127.99997, -16.411957, 128, 40, 11.114746, 40, -104, 40)
+uv = PackedVector2Array(-104, -72, 128, -72, 128, 40, -104, 40)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=2005967515]
+position = Vector2(-34.926743, 29.230331)
+scale = Vector2(2.3056211, 3.926385)
+color = Color(0.2784314, 0.37254903, 0.5019608, 1)
+polygon = PackedVector2Array(-104, -72, 128, -72, 127.99997, -16.411957, 128, 40, 11.114746, 40, -104, 40)
+uv = PackedVector2Array(-104, -72, 128, -72, 128, 40, -104, 40)
+
+[node name="back button" type="TextureButton" parent="." unique_id=947067185]
+offset_left = -242.99548
+offset_top = 74.285706
+offset_right = 229.00452
+offset_bottom = 291.2857
+offset_transform_enabled = true
+offset_transform_scale = Vector2(0.5, 0.5)
+texture_normal = SubResource("AtlasTexture_oeqib")
+texture_pressed = SubResource("AtlasTexture_oeqib")
+texture_hover = SubResource("AtlasTexture_labj1")
+stretch_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1331452525]
+offset_left = -194.99548
+offset_top = -245.7143
+offset_right = 157.00452
+offset_bottom = -151.7143
+theme_override_font_sizes/normal_font_size = 64
+text = "SETTINGS"
+fit_content = true
+scroll_active = false
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttonpress" type="AudioStreamPlayer" parent="." unique_id=921772125]
+stream = ExtResource("3_wswnh")
+volume_db = -10.544
+bus = &"sfx"
+
+[node name="master volume" type="HSlider" parent="." unique_id=176102576]
+offset_left = -88.0
+offset_top = -88.0
+offset_right = 200.0
+offset_bottom = -72.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+ticks_position = 1
+script = ExtResource("4_labj1")
+bus_name = "Master"
+
+[node name="sfx" type="HSlider" parent="." unique_id=1305006346]
+offset_left = -88.0
+offset_top = -24.0
+offset_right = 200.0
+offset_bottom = -8.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+ticks_position = 1
+script = ExtResource("5_lwwgp")
+bus_name = "sfx"
+
+[node name="bgm" type="HSlider" parent="." unique_id=948994688]
+offset_left = -88.0
+offset_top = 48.0
+offset_right = 200.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+ticks_position = 1
+script = ExtResource("6_bgjg7")
+bus_name = "bgm"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="." unique_id=139540643]
+offset_left = -240.0
+offset_top = -96.0
+offset_right = -40.0
+offset_bottom = -56.0
+text = "Master Volume"
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="." unique_id=776404424]
+offset_left = -240.0
+offset_top = -32.0
+offset_right = -40.0
+offset_bottom = 8.0
+text = "Sound Effect Volume"
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="." unique_id=1488746429]
+offset_left = -240.0
+offset_top = 40.0
+offset_right = -40.0
+offset_bottom = 80.0
+text = "BGM volume"
+
+[connection signal="pressed" from="back button" to="." method="_on_back_button_pressed"]

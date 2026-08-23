@@ -1,0 +1,84 @@
+[gd_scene format=3 uid="uid://cbeiuf1deb8h5"]
+
+[ext_resource type="Script" uid="uid://hvd0mlfg1b1k" path="res://win_zone.gd" id="1_u5o0w"]
+[ext_resource type="Texture2D" uid="uid://uv7kx0ywp4n4" path="res://assets/Untitled_Artwork 7.png" id="2_x5vhk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oeqib"]
+size = Vector2(34, 45)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeqib"]
+atlas = ExtResource("2_x5vhk")
+region = Rect2(1129, 1386, 226, 212)
+
+[sub_resource type="Animation" id="Animation_o1lpv"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_wow68"]
+resource_name = "idle"
+length = 1.7666667
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(),
+"points": PackedFloat32Array(),
+"times": PackedFloat32Array()
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(-25, -0.3, 0, 0.3, 0, -45.5, -0.3, 0, 0.3, 0, -25, -0.3, 0, 0, 0),
+"times": PackedFloat32Array(0.06666667, 0.8666667, 1.7333333)
+}
+
+[sub_resource type="Animation" id="Animation_3nlv8"]
+resource_name = "level end"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x25q2"]
+_data = {
+&"RESET": SubResource("Animation_o1lpv"),
+&"idle": SubResource("Animation_wow68"),
+&"level end": SubResource("Animation_3nlv8")
+}
+
+[node name="win trigger" type="Node2D" unique_id=1827182053]
+
+[node name="win zone" type="Area2D" parent="." unique_id=1444711451]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_u5o0w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="win zone" unique_id=1176918304]
+position = Vector2(6, -33)
+shape = SubResource("RectangleShape2D_oeqib")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2049354977]
+position = Vector2(5.9999995, 0)
+scale = Vector2(0.22405663, 0.2240566)
+texture = SubResource("AtlasTexture_oeqib")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1719404093]
+libraries/ = SubResource("AnimationLibrary_x25q2")
+autoplay = &"idle"
+
+[connection signal="body_entered" from="win zone" to="win zone" method="_on_body_entered"]
